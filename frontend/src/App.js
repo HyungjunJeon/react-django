@@ -1,4 +1,11 @@
 import React, { Component } from "react"
+import { Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import Projects from "./pages/Projects"
+import Article from "./pages/Article"
+import Contact from "./pages/Contact"
+import "bootstrap/dist/css/bootstrap.min.css"
+import Navbar from "./components/Navbar"
 
 class App extends Component {
   state = {
@@ -19,13 +26,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.posts.map((item) => (
-          <div key={item.id}>
-            <h1>{item.title}</h1>
-            <span>{item.content}</span>
-          </div>
-        ))}
+      <div id="app">
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/projects" element={<Projects />} />
+          <Route exact path="/article" element={<Article />} />
+          <Route exact path="/contact" element={<Contact />} />
+        </Routes>
       </div>
     )
   }
